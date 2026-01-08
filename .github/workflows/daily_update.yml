@@ -1,0 +1,27 @@
+name: Daily NBA Data Fetch
+on:
+  schedule:
+    - cron: '0 12 * * *' # Runs at 12:00 UTC (roughly 7-8 AM EST)
+  workflow_dispatch: # Allows you to run it manually to test
+
+jobs:
+  fetch-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Fetch from API
+        run: |
+          # This command calls the API and saves it to a file
+          curl -H "Authorization: ${{ secrets.NBA_API_KEY }}" \
+          "https://api.balldontlie.io/nba/v1/games?dates[]=$(date +%F)" \
+          > nba_data.json
+
+      - name: Push file back to GitHub
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Robot"
+          git add nba_data.json
+          git commit -m "Automated score update" || exit 0
+          git push
