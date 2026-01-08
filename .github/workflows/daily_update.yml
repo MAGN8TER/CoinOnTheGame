@@ -11,11 +11,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Fetch from API
+      - name: Fetch and Tailor NBA Data
         run: |
-          # This command calls the API and saves it to a file
+          # 1. Fetch the raw data from the API
+          # 2. Pipe it (|) into jq to pick exactly what we want
+          # 3. Save only the clean version to nba_data.json
           curl -H "Authorization: ${{ secrets.NBA_API_KEY }}" \
-          "https://api.balldontlie.io/nba/v1/games?dates[]=$(date +%F)" \
+          "https://api.balldontlie.io/nba/v1/games?dates[]=$(date +%F)" | \
+          jq '{games: [.data[] | {date: .date, time: .status, home: .home_team.full_name, visitor: .visitor_team.full_name}]}' \
           > nba_data.json
 
       - name: Push file back to GitHub
