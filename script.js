@@ -21,14 +21,15 @@ function loadNBAGames() {
                 const card = document.createElement("div");
                 card.className = "gameCardUI";
 
-                // 1. Create a Date object from the UTC string
-                const dateObj = new Date(game.date);
+                const dateParts = game.date.split('T')[0].split('-'); 
+                const year = dateParts[0];
+                const monthIndex = parseInt(dateParts[1]) - 1;
+                const day = dateParts[2];
 
-                // 2. Format the Date (e.g., "Jan 8")
                 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-                const cleanDate = `${months[dateObj.getUTCMonth()]} ${dateObj.getUTCDate()}`;
-            
-                // 3. Keep the time formatting as local so you know when to watch!
+                const cleanDate = `${months[monthIndex]} ${day}`;
+
+                // 2. Format the Time to your Local Zone
                 let displayTime = game.time;
                 if (game.time.includes('T') || !isNaN(Date.parse(game.time))) {
                     displayTime = new Date(game.time).toLocaleTimeString('en-US', {
@@ -38,13 +39,11 @@ function loadNBAGames() {
                     });
                 }
 
-                
-                // 2. Build the card with 3 columns to match your CSS grid
                 card.innerHTML = `
                     <div style="justify-self: center; padding: 10px;">${game.visitor}</div>
-                    <div style="text-align: center;">
-                        <div style="font-weight: bold;">${displayTime}</div>
-                        <div style="font-size: 0.7em; color: #aaa;">${cleanDate}</div>
+                    <div style="text-align: center; align-self: center;">
+                        <div style="font-weight: bold; font-size: 1.1em;">${displayTime}</div>
+                        <div style="font-size: 0.8em; color: #aaa; margin-top: 4px;">${cleanDate}</div>
                     </div>
                     <div style="justify-self: center; padding: 10px;">${game.home}</div>
                 `;
@@ -55,5 +54,3 @@ function loadNBAGames() {
         })
         .catch(err => console.error("Error loading games:", err));
 }
-
-
