@@ -79,7 +79,7 @@ function generateDayButtons() {
         // When clicked, make it active and (optionally) reload games for that date
         btn.onclick = function() {
             // 1. Handle the blue "active" color
-            document.querySelectorAll(".day-btn").forEach(b => b.classList.remove("active"));
+            document.querySelectorAll(".dayButton").forEach(b => b.classList.remove("active"));
             btn.classList.add("active");
 
             // 2. Call the display function with the date assigned to THIS button
@@ -88,4 +88,5 @@ function generateDayButtons() {
 
         container.appendChild(btn);
     }
+
 }
