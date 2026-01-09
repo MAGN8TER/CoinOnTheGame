@@ -44,10 +44,17 @@ function displayGamesForDate(selectedDate) {
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const cleanDate = `${months[parseInt(dateParts[1]) - 1]} ${dateParts[2]}`;
 
+        const estTime = new Date(game.time).toLocaleString("en-US", {
+            timeZone: "America/New_York",
+            hour: "numeric",
+            minute: "2-digit",
+            hour12: true
+        });
+
         card.innerHTML = `
             <div style="justify-self: center;">${game.visitor}</div>
             <div style="text-align: center; align-self: center;">
-                <div style="font-weight: bold;">${game.time}</div>
+                <div style="font-weight: bold;">${estTime}</div>
                 <div style="font-size: 0.8em; color: #aaa;">${cleanDate}</div>
             </div>
             <div style="justify-self: center;">${game.home}</div>
