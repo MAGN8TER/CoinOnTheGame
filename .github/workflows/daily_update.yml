@@ -24,7 +24,7 @@ jobs:
           # 2. Fetch the data using the dynamic DATE_QUERY
           # 3. Use jq to clean it up (same as before)
           curl -H "Authorization: ${{ secrets.NBA_API_KEY }}" \
-          "https://api.balldontlie.io/nba/v1/games?${DATE_QUERY}" | \
+          "https://api.balldontlie.io/nba/v1/games?${DATE_QUERY}&per_page=100" | \
           jq '{games: [.data[] | {date: .date, time: .status, home: .home_team.full_name, visitor: .visitor_team.full_name}] | sort_by(.date)}' \
           > nba_data.json
 
