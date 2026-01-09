@@ -1,37 +1,38 @@
-let allGames = []; // Global variable to hold all 7 days of data
+let allGames = [];
 
 window.onload = function() {
     generateDayButtons();
-    loadAllData(); // Fetch the big JSON file
+    loadAllData();
 };
 
 function loadAllData() {
+    // Make sure this points to your raw github link or local file
     fetch("./nba_data.json")
         .then(res => res.json())
         .then(data => {
-            allGames = data.games; // Save the games to our variable
-            // Display "Today" by default (day index 0)
+            allGames = data.games;
             displayGamesForDate(new Date()); 
         });
 }
 
 function displayGamesForDate(selectedDate) {
     const container = document.querySelector(".gamesFormat");
-    container.innerHTML = ""; // Clear current cards
+    if (!container) return;
+    container.innerHTML = ""; 
 
-    // Format the selected date to YYYY-MM-DD for comparison
-    const year = selectedDate.getFullYear();
-    const month = String(selectedDate.getMonth() + 1).padStart(2, '0');
-    const day = String(selectedDate.getDate()).padStart(2, '0');
-    const targetDateStr = `${year}-${month}-${day}`;
+    // FIX: Format date manually to avoid UTC/ISO timezone shifts
+    const y = selectedDate.getFullYear();
+    const m = String(selectedDate.getMonth() + 1).padStart(2, '0');
+    const d = String(selectedDate.getDate()).padStart(2, '0');
+    const targetDateStr = `${y}-${m}-${d}`;
 
-    // Filter the big list for only games matching the clicked day
     const filteredGames = allGames.filter(game => {
+        // This ensures we only compare the YYYY-MM-DD part
         return game.date.split('T')[0] === targetDateStr;
     });
 
     if (filteredGames.length === 0) {
-        container.innerHTML = "<p style='color:white;'>No games scheduled for this day.</p>";
+        container.innerHTML = "<p style='color:white; text-align:center;'>No games scheduled for this day.</p>";
         return;
     }
 
@@ -39,7 +40,6 @@ function displayGamesForDate(selectedDate) {
         const card = document.createElement("div");
         card.className = "gameCardUI";
         
-        // Use your manual split logic from earlier to keep the date stable
         const dateParts = game.date.split('T')[0].split('-');
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const cleanDate = `${months[parseInt(dateParts[1]) - 1]} ${dateParts[2]}`;
@@ -60,36 +60,32 @@ function generateDayButtons() {
     const container = document.getElementById("dayButtonID");
     if (!container) return;
     
-    container.innerHTML = ""; // Clear any old buttons
+    container.innerHTML = ""; 
     const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
     const today = new Date();
 
     for (let i = 0; i < 7; i++) {
-        // Create a new date object for each day (+0, +1, +2, etc.)
-        const date = new Date();
-        date.setDate(today.getDate() + i);
+        // FIX: Use 'let' inside the loop so each button gets its own unique date
+        let buttonDate = new Date();
+        buttonDate.setDate(today.getDate() + i);
 
         const btn = document.createElement("button");
         btn.className = "dayButton";
-        if (i === 0) btn.classList.add("active"); // Highlight 'Today'
+        if (i === 0) btn.classList.add("active");
 
-        // Get the shorthand name (e.g., "MON") and the day number (e.g., "8")
-        const dayName = days[date.getDay()];
-        const dayNum = date.getDate();
+        const dayName = days[buttonDate.getDay()];
+        const dayNum = buttonDate.getDate();
 
         btn.innerHTML = `<div>${dayName}</div><div style="font-size: 0.8em;">${dayNum}</div>`;
 
-        // When clicked, make it active and (optionally) reload games for that date
         btn.onclick = function() {
-            // 1. Handle the blue "active" color
+            // FIX: Selector must be .dayButton to clear the blue color
             const allButtons = document.querySelectorAll(".dayButton");
             allButtons.forEach(b => b.classList.remove("active"));
-
-            // 2. Now add 'active' only to the button we just clicked
             btn.classList.add("active");
 
-            // 2. Call the display function with the date assigned to THIS button
-            displayGamesForDate(date); 
+            // Pass the unique date for this specific button
+            displayGamesForDate(buttonDate); 
         };
 
         container.appendChild(btn);
