@@ -50,6 +50,12 @@ function displayGamesForDate(selectedDate) {
         let hour = parseInt(timeParts[0]);
         const minutes = timeParts[1];
 
+        hour = hour - 5;
+        if(hour < 0)
+        {
+            hour = hour + 24
+        }
+
         // 3. Convert 24-hour to 12-hour EST
         const ampm = hour >= 12 ? 'PM' : 'AM';
         hour = hour % 12;
