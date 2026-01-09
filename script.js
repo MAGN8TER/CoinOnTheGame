@@ -44,17 +44,23 @@ function displayGamesForDate(selectedDate) {
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const cleanDate = `${months[parseInt(dateParts[1]) - 1]} ${dateParts[2]}`;
 
-        const estTime = new Date(game.time).toLocaleString("en-US", {
-            timeZone: "America/New_York",
-            hour: "numeric",
-            minute: "2-digit",
-            hour12: true
-        });
+        const timeFull = game.time.split('T')[1]; 
+        // 2. Split the ":" to get [19, 00, 00]
+        const timeParts = timeFull.split(':');
+        let hour = parseInt(timeParts[0]);
+        const minutes = timeParts[1];
+
+        // 3. Convert 24-hour to 12-hour EST
+        const ampm = hour >= 12 ? 'PM' : 'AM';
+        hour = hour % 12;
+        hour = hour ? hour : 12; // if hour is 0, make it 12
+
+        const finalTime = `${hour}:${minutes} ${ampm} EST`;
 
         card.innerHTML = `
             <div style="justify-self: center;">${game.visitor}</div>
             <div style="text-align: center; align-self: center;">
-                <div style="font-weight: bold;">${estTime}</div>
+                <div style="font-weight: bold;">${finalTime}</div>
                 <div style="font-size: 0.8em; color: #aaa;">${cleanDate}</div>
             </div>
             <div style="justify-self: center;">${game.home}</div>
