@@ -54,3 +54,45 @@ function loadNBAGames() {
         })
         .catch(err => console.error("Error loading games:", err));
 }
+
+function generateDayButtons() {
+    const container = document.getElementById("dayButtonID");
+    if (!container) return;
+    
+    container.innerHTML = ""; // Clear any old buttons
+    const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+    const today = new Date();
+
+    for (let i = 0; i < 7; i++) {
+        // Create a new date object for each day (+0, +1, +2, etc.)
+        const date = new Date();
+        date.setDate(today.getDate() + i);
+
+        const btn = document.createElement("button");
+        btn.className = "dayButton";
+        if (i === 0) btn.classList.add("active"); // Highlight 'Today'
+
+        // Get the shorthand name (e.g., "MON") and the day number (e.g., "8")
+        const dayName = days[date.getDay()];
+        const dayNum = date.getDate();
+
+        btn.innerHTML = `<div>${dayName}</div><div style="font-size: 0.8em;">${dayNum}</div>`;
+
+        // When clicked, make it active and (optionally) reload games for that date
+        btn.onclick = function() {
+            const allButtons = document.querySelectorAll(".dayButton");
+            allButtons.forEach(b => b.classList.remove("active"));
+
+            // 2. Now add 'active' only to the button we just clicked
+            btn.classList.add("active");
+            loadNBAGames();
+        };
+
+        container.appendChild(btn);
+    }
+}
+
+window.onload = function() {
+    generateDayButtons();
+    loadNBAGames(); 
+};

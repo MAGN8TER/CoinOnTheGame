@@ -30,8 +30,8 @@ body
     width: 100%;
     background-color: #333;
     display: grid;
-    grid-template-areas: "home buttons";
-    grid-template-columns: 3fr 10fr;
+    grid-template-areas: "home buttons about";
+    grid-template-columns: 3fr 7fr 3fr;
     align-items: center; /* vertical alignment */
 }
 
@@ -45,6 +45,29 @@ body
 }
 
 .topBarBG div.home button
+{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: #ffffff00;
+    border: solid;
+    border-color: #ffffff00;
+    cursor: pointer;
+    font-family: Roboto;
+    font-size: 30px;
+    color: #F0EAD6;
+}
+
+.topBarBG div.about
+{
+    grid-area: about;
+    align-self: center;
+    justify-self: center;
+    width: 90%;
+    height: 90%;
+}
+
+.topBarBG div.about button
 {
     width: 100%;
     height: 100%;
@@ -80,12 +103,43 @@ body
     color:#333;
 }
 
-
-.nbaPage
+.sportPageText
 {
     width: 100%;
-    height: 30px;
-    font-size: 20px;
+    height: 75px;
+    color: #F0EAD6;
+    font-family: Roboto;
+    text-align: center;
+    justify-items: center;
+    font-size: 70px;
+    font-weight: 900;
+}
+
+.daysBar
+{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+}
+
+.dayButton {
+    padding: 10px 20px;
+    border: none;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+}
+
+.dayButton.active {
+    background-color: #007bff; /* Highlight color for the selected day */
+    font-weight: bold;
+}
+
+.dayButton:hover {
+    background-color: #444;
 }
 
 .gamesFormat
