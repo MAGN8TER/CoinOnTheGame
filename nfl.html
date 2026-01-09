@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <div>
-            <link rel="stylesheet" href="style.css">
-        </div>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sports Scores</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     
     <body>
@@ -15,14 +16,34 @@
             </div>
             <div class="buttons">
                 <button onclick="window.location.href='nfl.html'">
-                    nfl
+                    NFL
                 </button>
                 <button onclick="window.location.href='nba.html'">
-                    nba
+                    NBA
+                </button>
+                <button onclick="window.location.href='nhl.html'">
+                    NHL
+                </button>
+                <button onclick="window.location.href='mlb.html'">
+                    MLB
+                </button>
+            </div>
+            <div class="about">
+                <button onclick="window.location.href='about.html'">
+                    About
                 </button>
             </div>
         </div>
-        
+
+        <div class="sportPageText">
+            NFL
+        </div>
+
+        <div id="dayButtonID" class="daysBar"></div>
+
+        <!-- game cards -->
+        <div class="gamesFormat"></div>
+        <div id="gameCard"></div>
     </body>
 
     <script src="script.js"></script>
