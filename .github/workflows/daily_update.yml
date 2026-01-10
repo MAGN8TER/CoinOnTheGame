@@ -30,8 +30,10 @@ jobs:
 
       - name: Fetch and Tailor NFL Data
         run: |
+          # 1. Generate dates for today + next 8 days 
+          # (Extra days ensure we catch games that are UTC 'Tomorrow' but EST 'Tonight')
           DATE_QUERY=""
-          for i in {0..6}; do
+          for i in {0..8}; do
             D=$(date -d "+$i days" +%F)
             DATE_QUERY="${DATE_QUERY}&dates[]=$D"
           done
@@ -39,7 +41,7 @@ jobs:
           curl -H "Authorization: ${{ secrets.NBA_API_KEY }}" \
           "https://api.balldontlie.io/nfl/v1/games?${DATE_QUERY}&per_page=100" | \
           jq '{games: [.data[] | {
-            date: .date[0:10], 
+            date: (.date | strptime("%Y-%m-%dT%H:%M:%S%Z") | mktime | strftime("%Y-%m-%d"; "America/New_York")),
             time: .date, 
             home: .home_team.full_name, 
             visitor: .visitor_team.full_name
