@@ -59,7 +59,7 @@ jobs:
       
           curl -H "Authorization: ${{ secrets.NBA_API_KEY }}" \
           "https://api.balldontlie.io/nhl/v1/games?${DATE_QUERY}&per_page=100" | \
-          jq '{games: [(.data // [])[] | {
+          jq '{games: [.data[] | {
             date: (.start_time_utc | sub("\\.[0-9]+Z$"; "Z") | fromdateiso8601 - 18000 | strftime("%Y-%m-%d")),
             time: .start_time_utc, 
             home: .home_team.full_name, 
