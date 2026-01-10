@@ -38,7 +38,12 @@ jobs:
       
           curl -H "Authorization: ${{ secrets.NBA_API_KEY }}" \
           "https://api.balldontlie.io/nfl/v1/games?${DATE_QUERY}&per_page=100" | \
-          jq '{games: [.data[] | {date: .date, time: .status, home: .home_team.full_name, visitor: .visitor_team.full_name}] | sort_by(.date)}' \
+          jq '{games: [.data[] | {
+            date: .date[0:10], 
+            time: .date, 
+            home: .home_team.full_name, 
+            visitor: .visitor_team.full_name
+          }] | sort_by(.date)}' \
           > nfl_data.json
 
       - name: Push file back to GitHub
