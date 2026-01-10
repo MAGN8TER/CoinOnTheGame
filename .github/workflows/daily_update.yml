@@ -51,27 +51,38 @@ jobs:
 
       - name: Fetch and Tailor NHL Data
         run: |
-          # 1. Get the current year dynamically
+          # 1. Set variables
           CURRENT_YEAR=$(date +%Y)
+          # If it's early in the year (Jan-July), we actually want the 2025 season 
+          # but the API refers to it by the starting year (2025). 
+          # Let's try 2025 specifically if 2026 is empty.
           
-          # 2. Generate date query for today + next 8 days
           DATE_QUERY=""
           for i in {0..8}; do
             D=$(date -d "+$i days" +%F)
             DATE_QUERY="${DATE_QUERY}&dates[]=$D"
           done
-      
-          # 3. Fetch using the dynamic year and the date query
-          # We use (.data // []) to handle empty responses safely
-          curl -H "Authorization: ${{ secrets.NBA_API_KEY }}" \
-          "https://api.balldontlie.io/nhl/v1/games?seasons[]=${CURRENT_YEAR}${DATE_QUERY}&per_page=100" | \
-          jq --arg YEAR "$CURRENT_YEAR" '{games: [(.data[]? // empty) | {
-            date: (.start_time_utc | sub("\\.[0-9]+Z$"; "Z") | fromdateiso8601 - 18000 | strftime("%Y-%m-%d")),
-            time: .start_time_utc, 
-            home: .home_team.full_name, 
-            visitor: .away_team.full_name
-          }] | sort_by(.date)}' \
-          > nhl_data.json
+
+          # 2. The Fetch
+          # We use -L to follow redirects and -s to keep logs clean
+          curl -s -L -H "Authorization: ${{ secrets.NBA_API_KEY }}" \
+          "https://api.balldontlie.io/nhl/v1/games?seasons[]=2025${DATE_QUERY}&per_page=100" > raw_nhl.json
+
+          # 3. DEBUG: This will print the first 100 characters to your GitHub Action log 
+          # so you can see if the API actually sent data
+          head -c 100 raw_nhl.json
+          echo ""
+
+          # 4. Process with jq
+          # We use 'if .data then ... else {games: []} end' to guarantee a valid file
+          cat raw_nhl.json | jq 'if .data then {
+            games: [.data[] | {
+              date: (.start_time_utc | sub("\\.[0-9]+Z$"; "Z") | fromdateiso8601 - 18000 | strftime("%Y-%m-%d")),
+              time: .start_time_utc, 
+              home: .home_team.full_name, 
+              visitor: .away_team.full_name
+            }] | sort_by(.date)
+          } else {games: []} end' > nhl_data.json
 
       - name: Push file back to GitHub
         run: |
