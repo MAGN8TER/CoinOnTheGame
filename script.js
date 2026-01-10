@@ -56,28 +56,24 @@ function displayGamesForDate(selectedDate) {
         const card = document.createElement("div");
         card.className = "gameCardUI";
         
-        const dateParts = game.date.split('T')[0].split('-');
-        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        const cleanDate = `${months[parseInt(dateParts[1]) - 1]} ${dateParts[2]}`;
+        // 1. Label Date (e.g., Jan 10)
+        const d = new Date(game.date + "T12:00:00"); // Force midday to avoid timezone shifts
+        const cleanDateLabel = d.toLocaleDateString("en-US", { month: 'short', day: 'numeric' });
 
-        
-        const date = new Date(game.time);
-
-        const estTime = date.toLocaleTimeString("en-US", {
+        // 2. Display Time (Converted to EST)
+        // Works for both because both now use ISO strings!
+        const displayTime = new Date(game.time).toLocaleTimeString("en-US", {
             timeZone: "America/New_York",
-            hour: "numeric",
-            minute: "2-digit",
+            hour: 'numeric',
+            minute: '2-digit',
             hour12: true
         });
-
-        const finalTime = `${estTime} ET`;
-
 
         card.innerHTML = `
             <div style="justify-self: center;">${game.visitor}</div>
             <div style="text-align: center; align-self: center;">
-                <div style="font-weight: bold;">${finalTime}</div>
-                <div style="font-size: 0.8em; color: #aaa;">${cleanDate}</div>
+                <div style="font-weight: bold;">${displayTime}</div>
+                <div style="font-size: 0.8em; color: #aaa;">${cleanDateLabel}</div>
             </div>
             <div style="justify-self: center;">${game.home}</div>
         `;
