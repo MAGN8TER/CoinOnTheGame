@@ -1,1 +1,3 @@
-{"error":"Unauthorized: This endpoint requires a Paid or Paid+ subscription"}
+{
+  "games": []
+}
