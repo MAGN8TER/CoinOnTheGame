@@ -16,21 +16,14 @@ jobs:
 
       - name: Fetch and Tailor NHL Data
         run: |
-          # 1. Set the date for Today in EST to ensure we fetch the correct schedule
-          # Using America/New_York handles Daylight Savings automatically.
           TODAY=$(TZ="America/New_York" date +%Y-%m-%d)
           
-          echo "Fetching NHL schedule starting from $TODAY (EST)..."
-
-          # 2. Fetch from Official NHL API
-          # 3. Use JQ to convert the UTC time from the API into EST for your website
-          # We subtract 5 hours from the UTC time to get the correct EST date/time.
           curl -s "https://api-web.nhle.com/v1/schedule/$TODAY" | jq '{
             games: [
               .gameWeek[].games[] | {
                 date: (.startTimeUTC | fromdateiso8601 - 18000 | strftime("%Y-%m-%d")),
-                # added 'T' and ':000Z' for convenience 
-                time: (.startTimeUTC | fromdateiso8601 - 18000 | "T" + strftime("%H:%M:%S") + ":000Z"),
+                # concatenate "T" and "Z" around the formatted time
+                time: ("T" + (.startTimeUTC | fromdateiso8601 - 18000 | strftime("%H:%M:%S")) + "Z"),
                 home: .homeTeam.commonName.default,
                 visitor: .awayTeam.commonName.default
               }
