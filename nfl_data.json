@@ -2,12 +2,6 @@
   "games": [
     {
       "date": "2026-01-10",
-      "time": "2026-01-10T21:30:00.000Z",
-      "home": "Carolina Panthers",
-      "visitor": "Los Angeles Rams"
-    },
-    {
-      "date": "2026-01-10",
       "time": "2026-01-11T01:00:00.000Z",
       "home": "Chicago Bears",
       "visitor": "Green Bay Packers"
@@ -26,7 +20,7 @@
     },
     {
       "date": "2026-01-11",
-      "time": "2026-01-12T01:00:00.000Z",
+      "time": "2026-01-12T01:15:00.000Z",
       "home": "New England Patriots",
       "visitor": "Los Angeles Chargers"
     },
