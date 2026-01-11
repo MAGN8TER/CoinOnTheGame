@@ -16,7 +16,6 @@ jobs:
 
       - name: Fetch and Tailor NHL Data
         run: |
-          # Use America/New_York to ensure we fetch games based on EST date
           TODAY=$(TZ="America/New_York" date +%Y-%m-%d)
           
           curl -s "https://api-web.nhle.com/v1/schedule/$TODAY" | jq '{
@@ -24,8 +23,8 @@ jobs:
               .gameWeek[].games[] | {
                 # Format: YYYY-MM-DD
                 date: (.startTimeUTC | fromdateiso8601 - 18000 | strftime("%Y-%m-%d")),
-                # Format: THH:MM:SSZ (This matches standard ISO-8601)
-                time: ("T" + (.startTimeUTC | fromdateiso8601 - 18000 | strftime("%H:%M:%S")) + ".000Z"),
+                # FIX: Combine date and time into one valid ISO-8601 string
+                time: ((.startTimeUTC | fromdateiso8601 - 18000 | strftime("%Y-%m-%dT%H:%M:%S")) + ".000Z"),
                 home: .homeTeam.commonName.default,
                 visitor: .awayTeam.commonName.default
               }
