@@ -16,16 +16,20 @@ jobs:
 
       - name: Fetch and Tailor NHL Data
         run: |
-          # Get today's date in YYYY-MM-DD format
-          TODAY=$(date +%Y-%m-%d)
+          # 1. Set the date for Today in EST to ensure we fetch the correct schedule
+          # Using America/New_York handles Daylight Savings automatically.
+          TODAY=$(TZ="America/New_York" date +%Y-%m-%d)
           
-          # 1. Fetch from Official NHL API (No Key Required)
-          # 2. Use JQ to transform the nested gameWeek structure into your specific format
+          echo "Fetching NHL schedule starting from $TODAY (EST)..."
+
+          # 2. Fetch from Official NHL API
+          # 3. Use JQ to convert the UTC time from the API into EST for your website
+          # We subtract 5 hours from the UTC time to get the correct EST date/time.
           curl -s "https://api-web.nhle.com/v1/schedule/$TODAY" | jq '{
             games: [
               .gameWeek[].games[] | {
-                date: .startTimeUTC | split("T")[0],
-                time: .startTimeUTC | split("T")[1] | split("Z")[0],
+                date: (.startTimeUTC | fromdateiso8601 - 18000 | strftime("%Y-%m-%d")),
+                time: (.startTimeUTC | fromdateiso8601 - 18000 | strftime("%H:%M:%S")),
                 home: .homeTeam.commonName.default,
                 visitor: .awayTeam.commonName.default
               }
@@ -37,5 +41,5 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Robot"
           git add nhl_data.json
-          git commit -m "Automated NHL update: $(date +%Y-%m-%d)" || exit 0
+          git commit -m "Automated NHL update (EST): $(date +%Y-%m-%d)" || exit 0
           git push
