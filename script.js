@@ -6,7 +6,7 @@ window.onload = function() {
 };
 
 function loadAllData() {
-    // 1. Find the element that says NBA or NFL
+    // 1. Find the element that says NBA or NFL or NHL
     const sportElement = document.querySelector(".sportPageText");
     
     // 2. Default to 'nba' if the element isn't found, otherwise grab the text
