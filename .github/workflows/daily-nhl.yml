@@ -9,16 +9,28 @@ jobs:
   fetch-nhl:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Required to push changes back to the repo
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Fetch NHL Data
+      - name: Fetch and Tailor NHL Data
         run: |
-          curl -s -X GET "https://api.balldontlie.io/nhl/v1/games?seasons[]=2025" \
-            -H "Authorization: ${{ secrets.NBA_API_KEY }}" | \
-            jq '.data' > nhl_data.json
+          # Get today's date in YYYY-MM-DD format
+          TODAY=$(date +%Y-%m-%d)
+
+          # Fetch the schedule (NHLE automatically returns 7+ days from the start date)
+          # We use jq to mimic your NBA structure: {games: [{date, time, home, visitor}]}
+          curl -s "https://api-web.nhle.com/v1/schedule/$TODAY" | jq '{
+            games: [
+              .gameWeek[].games[] | {
+                date: .startTimeUTC | split("T")[0],
+                time: .startTimeUTC | split("T")[1] | split("Z")[0],
+                home: .homeTeam.commonName.default,
+                visitor: .awayTeam.commonName.default
+              }
+            ]
+          }' > nhl_data.json
 
       - name: Push NHL file back to GitHub
         run: |
