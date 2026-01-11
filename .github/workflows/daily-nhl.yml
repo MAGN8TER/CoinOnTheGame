@@ -18,9 +18,9 @@ jobs:
         run: |
           # Get today's date in YYYY-MM-DD format
           TODAY=$(date +%Y-%m-%d)
-
-          # Fetch the schedule (NHLE automatically returns 7+ days from the start date)
-          # We use jq to mimic your NBA structure: {games: [{date, time, home, visitor}]}
+          
+          # 1. Fetch from Official NHL API (No Key Required)
+          # 2. Use JQ to transform the nested gameWeek structure into your specific format
           curl -s "https://api-web.nhle.com/v1/schedule/$TODAY" | jq '{
             games: [
               .gameWeek[].games[] | {
@@ -37,5 +37,5 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Robot"
           git add nhl_data.json
-          git commit -m "Automated NHL score update" || exit 0
+          git commit -m "Automated NHL update: $(date +%Y-%m-%d)" || exit 0
           git push
