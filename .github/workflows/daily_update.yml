@@ -51,50 +51,24 @@ jobs:
 
       - name: Fetch and Tailor NHL Data
         run: |
-          YEAR=$(date +%Y)
-          MONTH=$(date +%m)
-
-          # NHL season starts in October
-          if [ "$MONTH" -lt 10 ]; then
-            SEASON=$((YEAR - 1))
-          else
-            SEASON=$YEAR
-          fi
-
-          TODAY=$(date +%F)
-          END_DATE=$(date -d "+6 days" +%F)
-
-          PAGE=1
-          ALL_GAMES="[]"
-
-          while : ; do
-            RESPONSE=$(curl -s -H "Authorization: ${{ secrets.NBA_API_KEY }}" \
-              "https://api.balldontlie.io/nhl/v1/games?seasons[]=$SEASON&per_page=500&page=$PAGE")
-
-            COUNT=$(echo "$RESPONSE" | jq '.data | length')
-
-            if [ "$COUNT" -eq 0 ]; then
-              break
-            fi
-
-            ALL_GAMES=$(jq -s '.[0] + .[1]' \
-              <(echo "$ALL_GAMES") \
-              <(echo "$RESPONSE" | jq '.data'))
-
-            PAGE=$((PAGE + 1))
+          # Generate dates for today + next 7 days
+          DATE_QUERY=""
+          for i in {0..6}; do
+            D=$(date -d "+$i days" +%F)
+            DATE_QUERY="${DATE_QUERY}&dates[]=$D"
           done
 
-          echo "$ALL_GAMES" | jq --arg TODAY "$TODAY" --arg END "$END_DATE" '
-          {
+          # Fetch NHL games using dates[] (same pattern as NBA/NFL)
+          curl -s -H "Authorization: ${{ secrets.NBA_API_KEY }}" \
+          "https://api.balldontlie.io/nhl/v1/games?${DATE_QUERY}&per_page=100" | \
+          jq '{
             games: [
-              .[]
-              | select(.date[0:10] >= $TODAY and .date[0:10] <= $END)
-              | {
-                  date: .date[0:10],
-                  time: .date,
-                  home: .home_team.full_name,
-                  visitor: .visitor_team.full_name
-                }
+              (.data // [])[] | {
+                date: .date[0:10],
+                time: .date,
+                home: .home_team.full_name,
+                visitor: .visitor_team.full_name
+              }
             ] | sort_by(.date)
           }' > nhl_data.json
 
