@@ -25,7 +25,7 @@ jobs:
                 # Format: YYYY-MM-DD
                 date: (.startTimeUTC | fromdateiso8601 - 18000 | strftime("%Y-%m-%d")),
                 # Format: THH:MM:SSZ (This matches standard ISO-8601)
-                time: ("T" + (.startTimeUTC | fromdateiso8601 - 18000 | strftime("%H:%M:%S")) + "Z"),
+                time: ("T" + (.startTimeUTC | fromdateiso8601 - 18000 | strftime("%H:%M:%S")) + ".000Z"),
                 home: .homeTeam.commonName.default,
                 visitor: .awayTeam.commonName.default
               }
