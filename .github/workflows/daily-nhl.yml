@@ -29,7 +29,8 @@ jobs:
             games: [
               .gameWeek[].games[] | {
                 date: (.startTimeUTC | fromdateiso8601 - 18000 | strftime("%Y-%m-%d")),
-                time: (.startTimeUTC | fromdateiso8601 - 18000 | strftime("%H:%M:%S")),
+                # added 'T' and ':000Z' for convenience 
+                time: (.startTimeUTC | fromdateiso8601 - 18000 | strftime(T"%H:%M:%S") + ":000Z"),
                 home: .homeTeam.commonName.default,
                 visitor: .awayTeam.commonName.default
               }
