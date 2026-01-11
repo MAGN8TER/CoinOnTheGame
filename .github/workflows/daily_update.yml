@@ -49,12 +49,24 @@ jobs:
           }] | sort_by(.date)}' \
           > nfl_data.json
 
-      - name: Fetch Raw NHL Data
+      - name: Fetch and Tailor NHL Data
         run: |
-          # We save the output directly to the file with NO filters
-          # -L follows redirects, -s is silent, -i shows headers if you want (but let's stick to the JSON)
-          curl -L -s -H "Authorization: ${{ secrets.NBA_API_KEY }}" \
-          "https://api.balldontlie.io/nhl/v1/games?seasons[]=2025&per_page=100" \
+          # 1. Generate dates for today + next 7 days
+          DATE_QUERY=""
+          for i in {0..6}; do
+            D=$(date -d "+$i days" +%F)
+            DATE_QUERY="${DATE_QUERY}&dates[]=$D"
+          done
+
+          # 2. Fetch NHL games and shift UTC → EST
+          curl -H "Authorization: ${{ secrets.NBA_API_KEY }}" \
+          "https://api.balldontlie.io/nhl/v1/games?${DATE_QUERY}&per_page=100" | \
+          jq '{games: [.data[] | {
+            date: (.date | sub("\\.[0-9]+Z$"; "Z") | fromdateiso8601 - 18000 | strftime("%Y-%m-%d")),
+            time: .date,
+            home: .home_team.full_name,
+            visitor: .visitor_team.full_name
+          }] | sort_by(.date)}' \
           > nhl_data.json
 
       - name: Push file back to GitHub
