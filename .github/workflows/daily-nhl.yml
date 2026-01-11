@@ -9,14 +9,21 @@ jobs:
   fetch-nhl:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Required to push changes back to the repo
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Fetch NHL Data
         run: |
-          curl -s -X GET "https://api.balldontlie.io/v1/games?league=NHL&seasons[]=2025" \
+          # Calculate current date and date + 7 days
+          START_DATE=$(date +%Y-%m-%d)
+          END_DATE=$(date -d "+7 days" +%Y-%m-%d)
+          
+          echo "Fetching NHL games from $START_DATE to $END_DATE"
+
+          # Fetch using dates, per_page=100, and cursor=100
+          curl -s -X GET "https://api.balldontlie.io/v1/games?league=NHL&start_date=$START_DATE&end_date=$END_DATE&per_page=100&cursor=100" \
             -H "Authorization: ${{ secrets.NBA_API_KEY }}" | \
             jq '.data' > nhl_data.json
 
@@ -25,5 +32,5 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Robot"
           git add nhl_data.json
-          git commit -m "Automated NHL score update" || exit 0
+          git commit -m "Automated NHL score update for $START_DATE to $END_DATE" || exit 0
           git push
