@@ -23,7 +23,7 @@ jobs:
               .gameWeek[].games[] | {
                 date: (.startTimeUTC | fromdateiso8601 - 18000 | strftime("%Y-%m-%d")),
                 # concatenate "T" and "Z" around the formatted time
-                time: ("T" + (.startTimeUTC | fromdateiso8601 - 18000 | strftime("%H:%M:%S")) + "Z"),
+                time: (.startTimeUTC | fromdateiso8601 - 18000 | "T" + strftime("%H:%M:%S") + "Z"),
                 home: .homeTeam.commonName.default,
                 visitor: .awayTeam.commonName.default
               }
