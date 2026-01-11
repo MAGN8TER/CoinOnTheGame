@@ -11,11 +11,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Fetch NHL Data
-        run: |
-          curl -s -H "Authorization: ${{ secrets.NBA_API_KEY }}" \
-            "https://api.balldontlie.io/nhl/v1/games" | \
-            jq '.data' > nhl_data.json
+     - name: Fetch NHL Data
+      run: |
+        curl -s -X GET "https://api.balldontlie.io/v1/games?league=NHL&seasons[]=2025" \
+          -H "Authorization: ${{ secrets.NBA_API_KEY }}" | \
+          jq '.data' > nhl_data.json
 
       - name: Push NHL file back to GitHub
         run: |
