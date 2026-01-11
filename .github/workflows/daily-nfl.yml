@@ -1,1 +1,39 @@
+name: Daily NFL Data Fetch
+on:
+  schedule:
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+
+jobs:
+  fetch-nfl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Fetch and Tailor NFL Data
+        run: |
+          DATE_QUERY=""
+          for i in {0..8}; do
+            D=$(date -d "+$i days" +%F)
+            DATE_QUERY="${DATE_QUERY}&dates[]=$D"
+          done
+
+          curl -H "Authorization: ${{ secrets.NBA_API_KEY }}" \
+          "https://api.balldontlie.io/nfl/v1/games?${DATE_QUERY}&per_page=100" | \
+          jq '{games: [.data[] | {
+            date: (.date | sub("\\.[0-9]+Z$"; "Z") | fromdateiso8601 - 18000 | strftime("%Y-%m-%d")),
+            time: .date, 
+            home: .home_team.full_name, 
+            visitor: .visitor_team.full_name
+          }] | sort_by(.date)}' \
+          > nfl_data.json
+
+      - name: Push NFL file back to GitHub
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Robot"
+          git add nfl_data.json
+          git commit -m "Automated NFL score update" || exit 0
+          git push
 
