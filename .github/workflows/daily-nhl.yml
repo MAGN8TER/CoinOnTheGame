@@ -1,1 +1,27 @@
+name: Daily NHL Data Fetch
+on:
+  schedule:
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+
+jobs:
+  fetch-nhl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Fetch NHL Data
+        run: |
+          curl -s -H "Authorization: ${{ secrets.NBA_API_KEY }}" \
+            "https://api.balldontlie.io/nhl/v1/games" | \
+            jq '.data' > nhl_data.json
+
+      - name: Push NHL file back to GitHub
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Robot"
+          git add nhl_data.json
+          git commit -m "Automated NHL score update" || exit 0
+          git push
 
