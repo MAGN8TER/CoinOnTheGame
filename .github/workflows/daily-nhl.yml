@@ -30,7 +30,7 @@ jobs:
               .gameWeek[].games[] | {
                 date: (.startTimeUTC | fromdateiso8601 - 18000 | strftime("%Y-%m-%d")),
                 # added 'T' and ':000Z' for convenience 
-                time: (.startTimeUTC | fromdateiso8601 - 18000 | strftime(T"%H:%M:%S") + ":000Z"),
+                time: (.startTimeUTC | fromdateiso8601 - 18000 | "T" + strftime("%H:%M:%S") + ":000Z"),
                 home: .homeTeam.commonName.default,
                 visitor: .awayTeam.commonName.default
               }
