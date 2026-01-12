@@ -34,4 +34,6 @@ jobs:
           git config --local user.name "GitHub Action Robot"
           git add nba_data.json
           git commit -m "Automated NBA score update" || exit 0
+
+          git pull --rebase origin main
           git push
