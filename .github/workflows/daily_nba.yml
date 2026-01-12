@@ -1,4 +1,8 @@
 name: Daily NBA Data Fetch
+concurrency: 
+  group: git-push-lock
+  cancel-in-progress: false
+
 on:
   schedule:
     - cron: '0 12 * * *'
