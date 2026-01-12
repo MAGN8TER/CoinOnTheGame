@@ -1,4 +1,8 @@
 name: Daily NFL Data Fetch
+concurrency: 
+  group: git-push-lock
+  cancel-in-progress: false
+
 on:
   schedule:
     - cron: '0 12 * * *'
@@ -35,5 +39,7 @@ jobs:
           git config --local user.name "GitHub Action Robot"
           git add nfl_data.json
           git commit -m "Automated NFL score update" || exit 0
+
+          git pull --rebase origin main
           git push
 
