@@ -28,17 +28,18 @@ jobs:
           jq '{games: [.data[] | {date: .date, time: .status, home: .home_team.full_name, visitor: .visitor_team.full_name}] | sort_by(.date)}' \
           > nba_data.json
 
-          curl -H "Authorization: ${{ secrets.NBA_API_KEY }}" \
-          "https://api.balldontlie.io/nba/v1/standings?season=2025" | \
-          jq '{standings: [.data[] | {
-            team: .team.full_name,
-            conference: .conference,
-            rank: .conference_rank,
-            wins: .wins,
-            losses: .losses,
-            win_pct: .win_pct
-          }] | sort_by(.conference, .rank)}' \
-          > nba_standings.json
+      - name: Fetch NBA Standings from SportsDB
+        run: |
+          # NBA League ID = 4387
+          curl -s "https://www.thesportsdb.com/api/v1/json/3/lookuptable.php?l=4387&s=2025" | \
+          jq '{standings: [.table[] | {
+            rank: .intRank,
+            team: .strTeam,
+            badge: .strTeamBadge,
+            wins: .intWin,
+            losses: .intLoss,
+            pct: .strWinLossPlan
+          }]}' > nba_standings.json
 
       - name: Push NBA file back to GitHub
         run: |
