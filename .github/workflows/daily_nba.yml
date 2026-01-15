@@ -31,8 +31,7 @@ jobs:
       - name: Fetch NBA Standings from SportsDB
         run: |
           # NBA League ID = 4387
-          curl -s "https://www.thesportsdb.com/api/v1/json/3/lookuptable.php?l=4387&s=2025" | \
-          > nba_standings.json
+          curl -s "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/standings" | jq '.' > nba_standings.json
 
       - name: Push NBA file back to GitHub
         run: |
