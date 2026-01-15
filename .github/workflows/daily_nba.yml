@@ -32,14 +32,7 @@ jobs:
         run: |
           # NBA League ID = 4387
           curl -s "https://www.thesportsdb.com/api/v1/json/3/lookuptable.php?l=4387&s=2025" | \
-          jq '{standings: [.table[] | {
-            rank: .intRank,
-            team: .strTeam,
-            badge: .strTeamBadge,
-            wins: .intWin,
-            losses: .intLoss,
-            pct: .strWinLossPlan
-          }]}' > nba_standings.json
+          > nba_standings.json
 
       - name: Push NBA file back to GitHub
         run: |
