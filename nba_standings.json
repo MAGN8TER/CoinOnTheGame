@@ -1,0 +1,390 @@
+{
+  "team": "Indiana Pacers",
+  "record": {
+    "name": "losses",
+    "displayName": "Losses",
+    "shortDisplayName": "L",
+    "description": "Losses",
+    "abbreviation": "L",
+    "type": "losses",
+    "value": 32.0,
+    "displayValue": "32"
+  }
+}
+{
+  "team": "Indiana Pacers",
+  "record": {
+    "name": "wins",
+    "displayName": "Wins",
+    "shortDisplayName": "W",
+    "description": "Wins",
+    "abbreviation": "W",
+    "type": "wins",
+    "value": 9.0,
+    "displayValue": "9"
+  }
+}
+{
+  "team": "Washington Wizards",
+  "record": {
+    "name": "losses",
+    "displayName": "Losses",
+    "shortDisplayName": "L",
+    "description": "Losses",
+    "abbreviation": "L",
+    "type": "losses",
+    "value": 29.0,
+    "displayValue": "29"
+  }
+}
+{
+  "team": "Washington Wizards",
+  "record": {
+    "name": "wins",
+    "displayName": "Wins",
+    "shortDisplayName": "W",
+    "description": "Wins",
+    "abbreviation": "W",
+    "type": "wins",
+    "value": 10.0,
+    "displayValue": "10"
+  }
+}
+{
+  "team": "Brooklyn Nets",
+  "record": {
+    "name": "losses",
+    "displayName": "Losses",
+    "shortDisplayName": "L",
+    "description": "Losses",
+    "abbreviation": "L",
+    "type": "losses",
+    "value": 27.0,
+    "displayValue": "27"
+  }
+}
+{
+  "team": "Brooklyn Nets",
+  "record": {
+    "name": "wins",
+    "displayName": "Wins",
+    "shortDisplayName": "W",
+    "description": "Wins",
+    "abbreviation": "W",
+    "type": "wins",
+    "value": 11.0,
+    "displayValue": "11"
+  }
+}
+{
+  "team": "Charlotte Hornets",
+  "record": {
+    "name": "losses",
+    "displayName": "Losses",
+    "shortDisplayName": "L",
+    "description": "Losses",
+    "abbreviation": "L",
+    "type": "losses",
+    "value": 26.0,
+    "displayValue": "26"
+  }
+}
+{
+  "team": "Charlotte Hornets",
+  "record": {
+    "name": "wins",
+    "displayName": "Wins",
+    "shortDisplayName": "W",
+    "description": "Wins",
+    "abbreviation": "W",
+    "type": "wins",
+    "value": 14.0,
+    "displayValue": "14"
+  }
+}
+{
+  "team": "Milwaukee Bucks",
+  "record": {
+    "name": "losses",
+    "displayName": "Losses",
+    "shortDisplayName": "L",
+    "description": "Losses",
+    "abbreviation": "L",
+    "type": "losses",
+    "value": 23.0,
+    "displayValue": "23"
+  }
+}
+{
+  "team": "Milwaukee Bucks",
+  "record": {
+    "name": "wins",
+    "displayName": "Wins",
+    "shortDisplayName": "W",
+    "description": "Wins",
+    "abbreviation": "W",
+    "type": "wins",
+    "value": 17.0,
+    "displayValue": "17"
+  }
+}
+{
+  "team": "Atlanta Hawks",
+  "record": {
+    "name": "losses",
+    "displayName": "Losses",
+    "shortDisplayName": "L",
+    "description": "Losses",
+    "abbreviation": "L",
+    "type": "losses",
+    "value": 22.0,
+    "displayValue": "22"
+  }
+}
+{
+  "team": "Atlanta Hawks",
+  "record": {
+    "name": "wins",
+    "displayName": "Wins",
+    "shortDisplayName": "W",
+    "description": "Wins",
+    "abbreviation": "W",
+    "type": "wins",
+    "value": 20.0,
+    "displayValue": "20"
+  }
+}
+{
+  "team": "Chicago Bulls",
+  "record": {
+    "name": "losses",
+    "displayName": "Losses",
+    "shortDisplayName": "L",
+    "description": "Losses",
+    "abbreviation": "L",
+    "type": "losses",
+    "value": 21.0,
+    "displayValue": "21"
+  }
+}
+{
+  "team": "Chicago Bulls",
+  "record": {
+    "name": "wins",
+    "displayName": "Wins",
+    "shortDisplayName": "W",
+    "description": "Wins",
+    "abbreviation": "W",
+    "type": "wins",
+    "value": 19.0,
+    "displayValue": "19"
+  }
+}
+{
+  "team": "Miami Heat",
+  "record": {
+    "name": "losses",
+    "displayName": "Losses",
+    "shortDisplayName": "L",
+    "description": "Losses",
+    "abbreviation": "L",
+    "type": "losses",
+    "value": 19.0,
+    "displayValue": "19"
+  }
+}
+{
+  "team": "Miami Heat",
+  "record": {
+    "name": "wins",
+    "displayName": "Wins",
+    "shortDisplayName": "W",
+    "description": "Wins",
+    "abbreviation": "W",
+    "type": "wins",
+    "value": 21.0,
+    "displayValue": "21"
+  }
+}
+{
+  "team": "Orlando Magic",
+  "record": {
+    "name": "losses",
+    "displayName": "Losses",
+    "shortDisplayName": "L",
+    "description": "Losses",
+    "abbreviation": "L",
+    "type": "losses",
+    "value": 18.0,
+    "displayValue": "18"
+  }
+}
+{
+  "team": "Orlando Magic",
+  "record": {
+    "name": "wins",
+    "displayName": "Wins",
+    "shortDisplayName": "W",
+    "description": "Wins",
+    "abbreviation": "W",
+    "type": "wins",
+    "value": 22.0,
+    "displayValue": "22"
+  }
+}
+{
+  "team": "Cleveland Cavaliers",
+  "record": {
+    "name": "losses",
+    "displayName": "Losses",
+    "shortDisplayName": "L",
+    "description": "Losses",
+    "abbreviation": "L",
+    "type": "losses",
+    "value": 19.0,
+    "displayValue": "19"
+  }
+}
+{
+  "team": "Cleveland Cavaliers",
+  "record": {
+    "name": "wins",
+    "displayName": "Wins",
+    "shortDisplayName": "W",
+    "description": "Wins",
+    "abbreviation": "W",
+    "type": "wins",
+    "value": 23.0,
+    "displayValue": "23"
+  }
+}
+{
+  "team": "Philadelphia 76ers",
+  "record": {
+    "name": "losses",
+    "displayName": "Losses",
+    "shortDisplayName": "L",
+    "description": "Losses",
+    "abbreviation": "L",
+    "type": "losses",
+    "value": 17.0,
+    "displayValue": "17"
+  }
+}
+{
+  "team": "Philadelphia 76ers",
+  "record": {
+    "name": "wins",
+    "displayName": "Wins",
+    "shortDisplayName": "W",
+    "description": "Wins",
+    "abbreviation": "W",
+    "type": "wins",
+    "value": 22.0,
+    "displayValue": "22"
+  }
+}
+{
+  "team": "Toronto Raptors",
+  "record": {
+    "name": "losses",
+    "displayName": "Losses",
+    "shortDisplayName": "L",
+    "description": "Losses",
+    "abbreviation": "L",
+    "type": "losses",
+    "value": 17.0,
+    "displayValue": "17"
+  }
+}
+{
+  "team": "Toronto Raptors",
+  "record": {
+    "name": "wins",
+    "displayName": "Wins",
+    "shortDisplayName": "W",
+    "description": "Wins",
+    "abbreviation": "W",
+    "type": "wins",
+    "value": 25.0,
+    "displayValue": "25"
+  }
+}
+{
+  "team": "Boston Celtics",
+  "record": {
+    "name": "losses",
+    "displayName": "Losses",
+    "shortDisplayName": "L",
+    "description": "Losses",
+    "abbreviation": "L",
+    "type": "losses",
+    "value": 15.0,
+    "displayValue": "15"
+  }
+}
+{
+  "team": "Boston Celtics",
+  "record": {
+    "name": "wins",
+    "displayName": "Wins",
+    "shortDisplayName": "W",
+    "description": "Wins",
+    "abbreviation": "W",
+    "type": "wins",
+    "value": 24.0,
+    "displayValue": "24"
+  }
+}
+{
+  "team": "New York Knicks",
+  "record": {
+    "name": "losses",
+    "displayName": "Losses",
+    "shortDisplayName": "L",
+    "description": "Losses",
+    "abbreviation": "L",
+    "type": "losses",
+    "value": 15.0,
+    "displayValue": "15"
+  }
+}
+{
+  "team": "New York Knicks",
+  "record": {
+    "name": "wins",
+    "displayName": "Wins",
+    "shortDisplayName": "W",
+    "description": "Wins",
+    "abbreviation": "W",
+    "type": "wins",
+    "value": 25.0,
+    "displayValue": "25"
+  }
+}
+{
+  "team": "Detroit Pistons",
+  "record": {
+    "name": "losses",
+    "displayName": "Losses",
+    "shortDisplayName": "L",
+    "description": "Losses",
+    "abbreviation": "L",
+    "type": "losses",
+    "value": 10.0,
+    "displayValue": "10"
+  }
+}
+{
+  "team": "Detroit Pistons",
+  "record": {
+    "name": "wins",
+    "displayName": "Wins",
+    "shortDisplayName": "W",
+    "description": "Wins",
+    "abbreviation": "W",
+    "type": "wins",
+    "value": 28.0,
+    "displayValue": "28"
+  }
+}
