@@ -1,48 +1,6 @@
 {
   "games": [
     {
-      "date": "2026-01-14",
-      "time": "2026-01-15T00:00:00Z",
-      "home": "Indiana Pacers",
-      "visitor": "Toronto Raptors"
-    },
-    {
-      "date": "2026-01-14",
-      "time": "2026-01-15T00:00:00Z",
-      "home": "Philadelphia 76ers",
-      "visitor": "Cleveland Cavaliers"
-    },
-    {
-      "date": "2026-01-14",
-      "time": "2026-01-15T01:00:00Z",
-      "home": "Chicago Bulls",
-      "visitor": "Utah Jazz"
-    },
-    {
-      "date": "2026-01-14",
-      "time": "2026-01-15T01:00:00Z",
-      "home": "New Orleans Pelicans",
-      "visitor": "Brooklyn Nets"
-    },
-    {
-      "date": "2026-01-14",
-      "time": "2026-01-15T02:30:00Z",
-      "home": "Dallas Mavericks",
-      "visitor": "Denver Nuggets"
-    },
-    {
-      "date": "2026-01-14",
-      "time": "2026-01-15T03:00:00Z",
-      "home": "Sacramento Kings",
-      "visitor": "New York Knicks"
-    },
-    {
-      "date": "2026-01-14",
-      "time": "2026-01-15T03:30:00Z",
-      "home": "LA Clippers",
-      "visitor": "Washington Wizards"
-    },
-    {
       "date": "2026-01-15",
       "time": "2026-01-15T19:00:00Z",
       "home": "Orlando Magic",
@@ -317,6 +275,48 @@
       "time": "2026-01-21T03:00:00Z",
       "home": "Sacramento Kings",
       "visitor": "Miami Heat"
+    },
+    {
+      "date": "2026-01-21",
+      "time": "2026-01-22T00:00:00Z",
+      "home": "Charlotte Hornets",
+      "visitor": "Cleveland Cavaliers"
+    },
+    {
+      "date": "2026-01-21",
+      "time": "2026-01-22T00:30:00Z",
+      "home": "Boston Celtics",
+      "visitor": "Indiana Pacers"
+    },
+    {
+      "date": "2026-01-21",
+      "time": "2026-01-22T00:30:00Z",
+      "home": "New York Knicks",
+      "visitor": "Brooklyn Nets"
+    },
+    {
+      "date": "2026-01-21",
+      "time": "2026-01-22T01:00:00Z",
+      "home": "Memphis Grizzlies",
+      "visitor": "Atlanta Hawks"
+    },
+    {
+      "date": "2026-01-21",
+      "time": "2026-01-22T01:00:00Z",
+      "home": "New Orleans Pelicans",
+      "visitor": "Detroit Pistons"
+    },
+    {
+      "date": "2026-01-21",
+      "time": "2026-01-22T02:30:00Z",
+      "home": "Milwaukee Bucks",
+      "visitor": "Oklahoma City Thunder"
+    },
+    {
+      "date": "2026-01-21",
+      "time": "2026-01-22T03:00:00Z",
+      "home": "Sacramento Kings",
+      "visitor": "Toronto Raptors"
     }
   ]
 }
