@@ -118,3 +118,46 @@ function generateDayButtons() {
         container.appendChild(btn);
     }
 }
+
+async function generateStandings() {
+    const sportElement = document.querySelector(".sportPageText");
+    
+    const currentSport = sportElement ? sportElement.innerText.trim().toLowerCase() : "nba";
+
+    try
+    {
+        const response = await fetch(`./${currentSport}_standings.json`);
+        const data = await response.json();
+
+        if(currentSport === "nba")
+        {
+            data.sort((a, b) => a.seed - b.seed);
+
+            const containerE = document.querySelector(".standingsNBA div.east");
+            const containerW = document.querySelector(".standingsNBA div.west");
+            if (!container) return;
+            container.innerHTML = "";
+
+            data.forEach(team => {
+                // Create a row/div for the team
+                data.forEach(team => {
+                    const teamRow = document.createElement("div");
+                    teamRow.className = "team-row";
+                    teamRow.innerHTML = `<span>${team.seed}. ${team.team} (${team.wins}-${team.losses})</span>`;
+
+                    // Directs the team to the correct side of the page
+                    if (team.conference.includes("Eastern") && eastContainer) {
+                        eastContainer.appendChild(teamRow);
+                    } else if (team.conference.includes("Western") && westContainer) {
+                        westContainer.appendChild(teamRow);
+                    }
+                });
+            });
+        }
+        
+    }
+    catch (error)
+    {
+        console.error("Error loading standings:", error);
+    }
+}

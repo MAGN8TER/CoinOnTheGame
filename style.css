@@ -249,3 +249,64 @@ body
     background-color: #b5b1a4;
     border-radius: 10px;
 }
+
+.standingsNBA
+{
+    width: 100%;
+    display: grid;
+    grid-template-areas: "east west";
+    grid-template-columns: 1fr 1fr;
+    font-family: Roboto;
+    font-size: 45px;
+    font-weight: 700;
+    color: #F0EAD6;
+}
+
+.standingsNBA div.east
+{
+    grid-area: east;
+    text-align: center;
+}
+
+.standingsNBA div.west
+{
+    grid-area: west;
+    text-align: center;
+}
+
+/* Individual Team Rows */
+.team-row {
+    display: flex;
+    align-items: center;
+    padding: 10px 5px;
+    border-bottom: 1px solid #333;
+    transition: background 0.2s;
+}
+
+.team-row:hover {
+    background: #2a2a2a;
+}
+
+/* Specific Column Widths */
+.seed {
+    width: 30px;
+    font-weight: bold;
+    color: #888;
+}
+
+.name {
+    flex-grow: 1; /* Takes up all remaining space */
+    font-weight: 500;
+}
+
+.record {
+    width: 80px;
+    text-align: right;
+    font-family: 'Courier New', monospace; /* Keeps numbers aligned */
+    color: #00ff88; /* Green for records */
+}
+
+/* Highlight for Playoff Spots (Top 6) */
+.team-row:nth-child(-n+7) .seed {
+    color: #fff;
+}
