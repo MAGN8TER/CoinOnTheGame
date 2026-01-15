@@ -122,43 +122,47 @@ function generateDayButtons() {
 
 async function generateStandings() {
     const sportElement = document.querySelector(".sportPageText");
-    
-    const currentSport = sportElement ? sportElement.innerText.trim().toLowerCase() : "nba";
+    // Extracts "nba" from "NBA Standings"
+    const currentSport = sportElement ? sportElement.innerText.trim().split(" ")[0].toLowerCase() : "nba";
 
-    try
-    {
+    try {
         const response = await fetch(`./${currentSport}_standings.json`);
+        if (!response.ok) throw new Error("Standings file not found");
         const data = await response.json();
 
-        if(currentSport === "nba")
-        {
+        if (currentSport === "nba") {
+            const eastContainer = document.querySelector(".standingsNBA div.east");
+            const westContainer = document.querySelector(".standingsNBA div.west");
+            
+            if (!eastContainer || !westContainer) return;
+
+            // Clear containers and add headers
+            eastContainer.innerHTML = "<h3>EAST</h3>";
+            westContainer.innerHTML = "<h3>WEST</h3>";
+
+            // Sort data by seed (1 to 15)
             data.sort((a, b) => a.seed - b.seed);
 
-            const containerE = document.querySelector(".standingsNBA div.east");
-            const containerW = document.querySelector(".standingsNBA div.west");
-            if (!container) return;
-            container.innerHTML = "";
-
             data.forEach(team => {
-                // Create a row/div for the team
-                data.forEach(team => {
-                    const teamRow = document.createElement("div");
-                    teamRow.className = "team-row";
-                    teamRow.innerHTML = `<span>${team.seed}. ${team.team} (${team.wins}-${team.losses})</span>`;
+                const teamRow = document.createElement("div");
+                teamRow.className = "team-row";
+                
+                // Using the specific classes we defined in CSS for alignment
+                teamRow.innerHTML = `
+                    <span class="seed">${team.seed}</span>
+                    <span class="name">${team.team}</span>
+                    <span class="record">${team.wins}-${team.losses}</span>
+                `;
 
-                    // Directs the team to the correct side of the page
-                    if (team.conference.includes("Eastern") && eastContainer) {
-                        eastContainer.appendChild(teamRow);
-                    } else if (team.conference.includes("Western") && westContainer) {
-                        westContainer.appendChild(teamRow);
-                    }
-                });
+                // Logic to decide which container to append to
+                if (team.conference.includes("Eastern")) {
+                    eastContainer.appendChild(teamRow);
+                } else if (team.conference.includes("Western")) {
+                    westContainer.appendChild(teamRow);
+                }
             });
         }
-        
-    }
-    catch (error)
-    {
+    } catch (error) {
         console.error("Error loading standings:", error);
     }
 }

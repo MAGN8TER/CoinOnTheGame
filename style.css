@@ -310,3 +310,9 @@ body
 .team-row:nth-child(-n+7) .seed {
     color: #fff;
 }
+
+.standingsNBA h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #ff9800;
+}
