@@ -30,9 +30,13 @@ jobs:
 
       - name: Fetch NBA Standings from SportsDB
         run: |
-          curl -s "https://site.api.espn.com/apis/v2/sports/basketball/nba/standings" | \
-          jq '.children[0].standings.entries[] | {team: .team.displayName, record: .stats[] | select(.name=="wins" or .name=="losses")}' \
-          > nba_standings.json
+          curl -s -L "https://site.api.espn.com/apis/v2/sports/basketball/nba/standings" | \
+          jq '.children[].standings.entries[] | {
+            team: .team.displayName,
+            wins: (.stats[] | select(.name=="wins").value),
+            losses: (.stats[] | select(.name=="losses").value),
+            seed: (.stats[] | select(.name=="playoffSeed").value)
+          }' | jq -s '.' > nba_standings.json
 
       - name: Push NBA file back to GitHub
         run: |
