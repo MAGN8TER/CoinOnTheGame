@@ -197,12 +197,12 @@ body
     font-family: Roboto;
     font-size: 20px;
     text-align: center;   /* Centers text within its own grid cell */
+    transition: background 0.2s;
 }
 
 .gameCardUI:hover
 {
     background-color: #444;
-    transition: background 0.2s;
 }
 
 .dropdown
