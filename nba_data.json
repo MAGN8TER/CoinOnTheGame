@@ -1,54 +1,6 @@
 {
   "games": [
     {
-      "date": "2026-01-22",
-      "time": "2026-01-23T00:00:00Z",
-      "home": "Orlando Magic",
-      "visitor": "Charlotte Hornets"
-    },
-    {
-      "date": "2026-01-22",
-      "time": "2026-01-23T00:00:00Z",
-      "home": "Philadelphia 76ers",
-      "visitor": "Houston Rockets"
-    },
-    {
-      "date": "2026-01-22",
-      "time": "2026-01-23T00:00:00Z",
-      "home": "Washington Wizards",
-      "visitor": "Denver Nuggets"
-    },
-    {
-      "date": "2026-01-22",
-      "time": "2026-01-23T00:30:00Z",
-      "home": "Dallas Mavericks",
-      "visitor": "Golden State Warriors"
-    },
-    {
-      "date": "2026-01-22",
-      "time": "2026-01-23T01:00:00Z",
-      "home": "Minnesota Timberwolves",
-      "visitor": "Chicago Bulls"
-    },
-    {
-      "date": "2026-01-22",
-      "time": "2026-01-23T02:00:00Z",
-      "home": "Utah Jazz",
-      "visitor": "San Antonio Spurs"
-    },
-    {
-      "date": "2026-01-22",
-      "time": "2026-01-23T03:00:00Z",
-      "home": "LA Clippers",
-      "visitor": "Los Angeles Lakers"
-    },
-    {
-      "date": "2026-01-22",
-      "time": "2026-01-23T03:00:00Z",
-      "home": "Portland Trail Blazers",
-      "visitor": "Miami Heat"
-    },
-    {
       "date": "2026-01-23",
       "time": "2026-01-24T00:00:00Z",
       "home": "Detroit Pistons",
@@ -110,7 +62,7 @@
     },
     {
       "date": "2026-01-24",
-      "time": "2026-01-24T23:00:00Z",
+      "time": "2026-01-24T17:00:00Z",
       "home": "Charlotte Hornets",
       "visitor": "Washington Wizards"
     },
@@ -317,6 +269,54 @@
       "time": "2026-01-29T02:30:00Z",
       "home": "Houston Rockets",
       "visitor": "San Antonio Spurs"
+    },
+    {
+      "date": "2026-01-29",
+      "time": "2026-01-30T01:00:00Z",
+      "home": "Chicago Bulls",
+      "visitor": "Miami Heat"
+    },
+    {
+      "date": "2026-01-29",
+      "time": "2026-01-30T00:00:00Z",
+      "home": "Philadelphia 76ers",
+      "visitor": "Sacramento Kings"
+    },
+    {
+      "date": "2026-01-29",
+      "time": "2026-01-30T00:00:00Z",
+      "home": "Washington Wizards",
+      "visitor": "Milwaukee Bucks"
+    },
+    {
+      "date": "2026-01-29",
+      "time": "2026-01-30T01:00:00Z",
+      "home": "Atlanta Hawks",
+      "visitor": "Houston Rockets"
+    },
+    {
+      "date": "2026-01-29",
+      "time": "2026-01-30T01:30:00Z",
+      "home": "Dallas Mavericks",
+      "visitor": "Charlotte Hornets"
+    },
+    {
+      "date": "2026-01-29",
+      "time": "2026-01-30T02:00:00Z",
+      "home": "Denver Nuggets",
+      "visitor": "Brooklyn Nets"
+    },
+    {
+      "date": "2026-01-29",
+      "time": "2026-01-30T02:00:00Z",
+      "home": "Phoenix Suns",
+      "visitor": "Detroit Pistons"
+    },
+    {
+      "date": "2026-01-29",
+      "time": "2026-01-30T02:30:00Z",
+      "home": "Minnesota Timberwolves",
+      "visitor": "Oklahoma City Thunder"
     }
   ]
 }
