@@ -23,7 +23,7 @@
   {
     "conference": "Eastern Conference",
     "team": "Milwaukee Bucks",
-    "wins": 19.0,
+    "wins": 20.0,
     "losses": 29.0,
     "seed": 12.0
   },
@@ -67,33 +67,33 @@
     "team": "Philadelphia 76ers",
     "wins": 29.0,
     "losses": 21.0,
-    "seed": 6.0
+    "seed": 5.0
   },
   {
     "conference": "Eastern Conference",
     "team": "Toronto Raptors",
     "wins": 30.0,
+    "losses": 22.0,
+    "seed": 6.0
+  },
+  {
+    "conference": "Eastern Conference",
+    "team": "Cleveland Cavaliers",
+    "wins": 31.0,
     "losses": 21.0,
     "seed": 4.0
   },
   {
     "conference": "Eastern Conference",
-    "team": "Cleveland Cavaliers",
-    "wins": 30.0,
-    "losses": 21.0,
-    "seed": 5.0
-  },
-  {
-    "conference": "Eastern Conference",
     "team": "New York Knicks",
-    "wins": 32.0,
+    "wins": 33.0,
     "losses": 18.0,
     "seed": 2.0
   },
   {
     "conference": "Eastern Conference",
     "team": "Boston Celtics",
-    "wins": 32.0,
+    "wins": 33.0,
     "losses": 18.0,
     "seed": 3.0
   },
@@ -108,14 +108,14 @@
     "conference": "Western Conference",
     "team": "Sacramento Kings",
     "wins": 12.0,
-    "losses": 39.0,
+    "losses": 40.0,
     "seed": 15.0
   },
   {
     "conference": "Western Conference",
     "team": "New Orleans Pelicans",
     "wins": 13.0,
-    "losses": 39.0,
+    "losses": 40.0,
     "seed": 14.0
   },
   {
@@ -135,7 +135,7 @@
   {
     "conference": "Western Conference",
     "team": "Memphis Grizzlies",
-    "wins": 19.0,
+    "wins": 20.0,
     "losses": 29.0,
     "seed": 11.0
   },
@@ -150,7 +150,7 @@
     "conference": "Western Conference",
     "team": "LA Clippers",
     "wins": 23.0,
-    "losses": 26.0,
+    "losses": 27.0,
     "seed": 9.0
   },
   {
@@ -165,40 +165,40 @@
     "team": "Los Angeles Lakers",
     "wins": 30.0,
     "losses": 19.0,
-    "seed": 5.0
+    "seed": 6.0
   },
   {
     "conference": "Western Conference",
     "team": "Phoenix Suns",
     "wins": 31.0,
     "losses": 20.0,
-    "seed": 6.0
+    "seed": 7.0
   },
   {
     "conference": "Western Conference",
     "team": "Minnesota Timberwolves",
-    "wins": 31.0,
+    "wins": 32.0,
     "losses": 20.0,
-    "seed": 7.0
+    "seed": 5.0
   },
   {
     "conference": "Western Conference",
     "team": "Houston Rockets",
     "wins": 31.0,
-    "losses": 17.0,
+    "losses": 18.0,
     "seed": 4.0
   },
   {
     "conference": "Western Conference",
     "team": "Denver Nuggets",
     "wins": 33.0,
-    "losses": 18.0,
+    "losses": 19.0,
     "seed": 3.0
   },
   {
     "conference": "Western Conference",
     "team": "San Antonio Spurs",
-    "wins": 33.0,
+    "wins": 34.0,
     "losses": 16.0,
     "seed": 2.0
   },
@@ -206,7 +206,7 @@
     "conference": "Western Conference",
     "team": "Oklahoma City Thunder",
     "wins": 40.0,
-    "losses": 11.0,
+    "losses": 12.0,
     "seed": 1.0
   }
 ]
