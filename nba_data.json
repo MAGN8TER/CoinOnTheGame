@@ -1,42 +1,6 @@
 {
   "games": [
     {
-      "date": "2026-02-06",
-      "time": "2026-02-07T00:30:00Z",
-      "home": "Boston Celtics",
-      "visitor": "Miami Heat"
-    },
-    {
-      "date": "2026-02-06",
-      "time": "2026-02-07T00:30:00Z",
-      "home": "Detroit Pistons",
-      "visitor": "New York Knicks"
-    },
-    {
-      "date": "2026-02-06",
-      "time": "2026-02-07T01:00:00Z",
-      "home": "Milwaukee Bucks",
-      "visitor": "Indiana Pacers"
-    },
-    {
-      "date": "2026-02-06",
-      "time": "2026-02-07T01:00:00Z",
-      "home": "Minnesota Timberwolves",
-      "visitor": "New Orleans Pelicans"
-    },
-    {
-      "date": "2026-02-06",
-      "time": "2026-02-07T03:00:00Z",
-      "home": "Portland Trail Blazers",
-      "visitor": "Memphis Grizzlies"
-    },
-    {
-      "date": "2026-02-06",
-      "time": "2026-02-07T03:00:00Z",
-      "home": "Sacramento Kings",
-      "visitor": "LA Clippers"
-    },
-    {
       "date": "2026-02-07",
       "time": "2026-02-07T20:00:00Z",
       "home": "Brooklyn Nets",
