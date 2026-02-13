@@ -1,30 +1,6 @@
 {
   "games": [
     {
-      "date": "2026-02-12",
-      "time": "2026-02-12T11:00:00.000Z",
-      "home": "France",
-      "visitor": "Switzerland"
-    },
-    {
-      "date": "2026-02-12",
-      "time": "2026-02-12T15:30:00.000Z",
-      "home": "Canada",
-      "visitor": "Czechia"
-    },
-    {
-      "date": "2026-02-12",
-      "time": "2026-02-12T20:00:00.000Z",
-      "home": "USA",
-      "visitor": "Latvia"
-    },
-    {
-      "date": "2026-02-12",
-      "time": "2026-02-12T20:00:00.000Z",
-      "home": "Denmark",
-      "visitor": "Germany"
-    },
-    {
       "date": "2026-02-13",
       "time": "2026-02-13T11:00:00.000Z",
       "home": "Sweden",
