@@ -59,6 +59,60 @@
       "time": "2026-02-20T03:30:00Z",
       "home": "LA Clippers",
       "visitor": "Denver Nuggets"
+    },
+    {
+      "date": "2026-02-20",
+      "time": "2026-02-21T00:00:00Z",
+      "home": "Charlotte Hornets",
+      "visitor": "Cleveland Cavaliers"
+    },
+    {
+      "date": "2026-02-20",
+      "time": "2026-02-21T00:00:00Z",
+      "home": "Washington Wizards",
+      "visitor": "Indiana Pacers"
+    },
+    {
+      "date": "2026-02-20",
+      "time": "2026-02-21T00:00:00Z",
+      "home": "Memphis Grizzlies",
+      "visitor": "Utah Jazz"
+    },
+    {
+      "date": "2026-02-20",
+      "time": "2026-02-21T00:30:00Z",
+      "home": "Atlanta Hawks",
+      "visitor": "Miami Heat"
+    },
+    {
+      "date": "2026-02-20",
+      "time": "2026-02-21T00:30:00Z",
+      "home": "Minnesota Timberwolves",
+      "visitor": "Dallas Mavericks"
+    },
+    {
+      "date": "2026-02-20",
+      "time": "2026-02-21T01:00:00Z",
+      "home": "New Orleans Pelicans",
+      "visitor": "Milwaukee Bucks"
+    },
+    {
+      "date": "2026-02-20",
+      "time": "2026-02-21T01:00:00Z",
+      "home": "Oklahoma City Thunder",
+      "visitor": "Brooklyn Nets"
+    },
+    {
+      "date": "2026-02-20",
+      "time": "2026-02-21T03:00:00Z",
+      "home": "Los Angeles Lakers",
+      "visitor": "LA Clippers"
+    },
+    {
+      "date": "2026-02-20",
+      "time": "2026-02-21T03:00:00Z",
+      "home": "Portland Trail Blazers",
+      "visitor": "Denver Nuggets"
     }
   ]
 }
